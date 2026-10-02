@@ -1,8 +1,12 @@
 import time
 from fastapi import FastAPI, Query, HTTPException, Request
 
-from app.test import extract_track_info
-from app.album import extract_album_info
+try:
+    from app.test import extract_track_info
+    from app.album import extract_album_info
+except ModuleNotFoundError:
+    from test import extract_track_info
+    from album import extract_album_info
 
 
 app = FastAPI(
